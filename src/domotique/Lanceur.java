@@ -17,19 +17,13 @@ public class Lanceur {
 		System.out.println(ordinateur);
 		System.out.println(chauffage);
 
-		
-		System.out.println("Marque :" + ordinateur.getMarque()
-					 	+ ", Modele : " + ordinateur.getModele());
-		System.out.println("Marque :" + chauffage.getMarque() 
-						+ ", Modele : " + chauffage.getModele()
-					    + ", Thermostat : " + chauffage.getValeurThermostat());
-
+	
 		
 		//Mise en marche chauffage, reglage thermostat
 		chauffage.demarrer();
 		chauffage.setValeurThermostat(7);
 		
-		System.out.println("Chauffage en marche? :" + chauffage.getIsEnMarche() 
+		System.out.println("Chauffage en marche? :" + chauffage.isEnMarche() 
 						+ ", Thermostat : " + chauffage.getValeurThermostat());
 		
 		
@@ -38,7 +32,7 @@ public class Lanceur {
 			chauffage.incrementeThermostat();
 		}
 		
-		System.out.println("Chauffage en marche? :" + chauffage.getIsEnMarche() 
+		System.out.println("Chauffage en marche? :" + chauffage.isEnMarche() 
 		+ ", Thermostat : " + chauffage.getValeurThermostat());
 
 		// mise en marche de l'ordinateur

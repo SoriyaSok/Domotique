@@ -23,5 +23,10 @@ public abstract class Appareil {
 	public void setModele(String pModele) {
 		modele = pModele;
 	} // set
+	@Override
+	public String toString() {
+		return "Appareil [marque=" + marque + ", modele=" + modele + "]";
+	}
 
+	
 }

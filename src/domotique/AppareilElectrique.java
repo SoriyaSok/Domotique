@@ -28,7 +28,7 @@ public class AppareilElectrique extends Appareil {
 	public void setIsEnMarche(boolean pOnOff) {
 			isEnMarche = pOnOff ;
 	} // set
-	public boolean getIsEnMarche() {
+	public boolean isEnMarche() {
 			return isEnMarche;
 	} // get
 
@@ -57,4 +57,14 @@ public class AppareilElectrique extends Appareil {
 		  		return 0;
 	}//getConsommation
 
+
+
+	@Override
+	public String toString() {
+		return "AppareilElectrique [Puissance =" + iPuissance + ", EnMarche =" + isEnMarche + ", Modèle ="
+				+ super.getModele() + " Marque ="+super.getMarque()+"]";
+	}
+
+	
+	
 }

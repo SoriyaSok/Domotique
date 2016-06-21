@@ -7,8 +7,8 @@ public class AppareilElectrique extends Appareil {
 
 
 	//Constructeur
-	public AppareilElectrique(String p_Marque,String p_Modele, int p_Puissance){
-		super(p_Marque, p_Modele);
+	public AppareilElectrique(String p_MarqueAppareilElectrique,String p_Modele, int p_Puissance){
+		super(p_MarqueAppareilElectrique, p_Modele);
 		iPuissance=p_Puissance;
 		isEnMarche=false;
 	}// constructeur

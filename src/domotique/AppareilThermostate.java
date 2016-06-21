@@ -37,7 +37,7 @@ public class AppareilThermostate extends AppareilElectrique {
 			puissanceInstantanee = 0;
 		}
 		return puissanceInstantanee = 0;
-	}
+	}//getConsommation
 
 	@Override
 	public String toString() {

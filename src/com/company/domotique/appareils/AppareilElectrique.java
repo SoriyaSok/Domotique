@@ -1,4 +1,5 @@
-package domotique;
+package com.company.domotique.appareils;
+
 
 public class AppareilElectrique extends Appareil {
 

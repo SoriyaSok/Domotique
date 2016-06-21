@@ -1,4 +1,6 @@
-package domotique;
+package com.company.domotique.application;
+import com.company.domotique.appareils.AppareilElectrique;
+import com.company.domotique.appareils.AppareilThermostate;
 
 public class Lanceur {
 	
@@ -13,7 +15,7 @@ public class Lanceur {
 
 		// affichage de l'objet chauffage (methode toString appelee par defaut)
 		//Verification de l'instanciation
-		System.out.println("111111111111111111111111111111111");
+	
 		System.out.println(ordinateur);
 		System.out.println(chauffage);
 

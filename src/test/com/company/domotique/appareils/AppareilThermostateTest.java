@@ -7,14 +7,14 @@ import org.junit.Test;
 public class AppareilThermostateTest {
 
 	@Test
-	public void testIncrementeThermostat() {
+	public void testIncrementerThermostat() {
 		//fail("Not yet implemented");
 		AppareilThermostate chauffage= new AppareilThermostate("Philips","mod123",1000,20,50);
 		chauffage.demarrer();
 		
 		int valeurThermostat = 45;
 		chauffage.setValeurThermostat(valeurThermostat);
-		chauffage.incrementeThermostat();
+		chauffage.incrementerThermostat();
 		int nouvelleValeurThermostat = chauffage.getValeurThermostat();
 		
 		
@@ -24,7 +24,7 @@ public class AppareilThermostateTest {
 	}
 	
 	@Test
-	public void testIncrementeThermostatWhenThermostatMax() {
+	public void testIncrementerThermostatWhenThermostatMax() {
 		//fail("Not yet implemented");
 		AppareilThermostate chauffage= new AppareilThermostate("Philips","mod123",1000,20,50);
 		chauffage.demarrer();
@@ -32,7 +32,7 @@ public class AppareilThermostateTest {
 		//ma version
 		int valeurThermostat = 50;
 		chauffage.setValeurThermostat(valeurThermostat);
-		chauffage.incrementeThermostat();
+		chauffage.incrementerThermostat();
 		int nouvelleValeurThermostat = chauffage.getValeurThermostat();
 		
 		//testons...

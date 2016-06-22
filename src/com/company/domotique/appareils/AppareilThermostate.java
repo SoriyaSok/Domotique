@@ -3,6 +3,7 @@ package com.company.domotique.appareils;
 
 public class AppareilThermostate extends AppareilElectrique {
 
+	
 	private int puissanceInstantanee = 0;
 	private int incPuissance = 20;
 	private int valeurThermostat = 0;
@@ -23,7 +24,12 @@ public class AppareilThermostate extends AppareilElectrique {
 		this.valeurThermostat = p_nouvelleValeurThermostat;
 	}
 
-	public void incrementeThermostat() {
+	/**
+	 * cette méthode incrementeThermostat() vérifie si la valeur du thermostat n'est pas à sa valeur maximale.
+	 * si elle ne l'est pas, elle incrémente sa valeur de +1.
+	 * il n'y a pas de paramètre d'entrée et cette méthode ne retourne rien (void).
+	 */
+	public void incrementerThermostat() {
 		if (valeurThermostat < valeurThermostatMax) {
 			valeurThermostat += 1;
 		}

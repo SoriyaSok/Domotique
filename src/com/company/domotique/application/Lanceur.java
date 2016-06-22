@@ -31,7 +31,7 @@ public class Lanceur {
 		
 		//Tentative d'incrementation du thermostat superieure � son thermostat maxi (50)
 		for (int i=0; i<53; i++) {
-			chauffage.incrementeThermostat();
+			chauffage.incrementerThermostat();
 		}
 		
 		System.out.println("Chauffage en marche? :" + chauffage.isEnMarche() 

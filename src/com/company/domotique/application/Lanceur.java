@@ -38,6 +38,8 @@ public class Lanceur {
 		//etc...................................
 
 
+		AppareilElectrique[] tab_ae = new AppareilElectrique[10]; 
+		
 	System.out.println("Au revoir!");
 				
 	}

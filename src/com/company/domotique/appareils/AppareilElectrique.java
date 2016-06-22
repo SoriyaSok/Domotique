@@ -5,7 +5,10 @@ public class AppareilElectrique extends Appareil {
 
 	protected int iPuissance=0;
 	protected boolean isEnMarche=false;
-
+	
+	public AppareilElectrique() {
+		super();
+	}
 
 	//Constructeur
 	public AppareilElectrique(String p_MarqueAppareilElectrique,String p_Modele, int p_Puissance){
@@ -62,8 +65,8 @@ public class AppareilElectrique extends Appareil {
 
 	@Override
 	public String toString() {
-		return "AppareilElectrique [Puissance =" + iPuissance + ", EnMarche =" + isEnMarche + ", Modèle ="
-				+ super.getModele() + " Marque ="+super.getMarque()+"]";
+		return " Marque : " + super.getMarque() + "\n Modele : " + super.getModele() + 
+				"\nPuissance = " + iPuissance + "\n---------";
 	}
 
 	

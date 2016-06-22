@@ -3,7 +3,7 @@ package com.company.domotique.appareils;
 /**
  * AppareilThermostate est une classe d'appareilElectrique qui dispose de méthode lié à la présence d'un thermostat
  * 
- * @author Soriya & Valentin
+ * @author soriyaValentin
  * @version 1.0
  *
  */
@@ -14,6 +14,10 @@ public class AppareilThermostate extends AppareilElectrique {
 	private int incPuissance = 20;
 	private int valeurThermostat = 0;
 	private static int valeurThermostatMax = 20;
+	
+	public AppareilThermostate() {
+		super();
+	}
 
 	public AppareilThermostate(String p_Marque, String p_Modele, int p_Puissance,
 			int p_incPuissance, int p_valeurThermostatMax) {
@@ -50,9 +54,16 @@ public class AppareilThermostate extends AppareilElectrique {
 		} 
 	}
 	
+	@Override
 	public int getConsommation() {
 		calculConsommation();
 		return puissanceInstantanee;
+	}
+
+	@Override
+	public void arreter() {
+		valeurThermostat = 0;
+		super.arreter();
 	}
 
 	@Override

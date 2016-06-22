@@ -9,17 +9,12 @@ public class Lanceur {
 		System.out.println("Bonjour");
 		AppareilElectrique ordinateur= new AppareilElectrique("DELL","GX100",500);
 		AppareilThermostate chauffage= new AppareilThermostate("Philips","mod123",1000,20,50);
-		System.out.println(ordinateur);
-		System.out.println(chauffage);
-
 
 		// affichage de l'objet chauffage (methode toString appelee par defaut)
 		//Verification de l'instanciation
-	
+
 		System.out.println(ordinateur);
 		System.out.println(chauffage);
-
-	
 		
 		//Mise en marche chauffage, reglage thermostat
 		chauffage.demarrer();

@@ -65,8 +65,8 @@ public class AppareilElectrique extends Appareil {
 
 	@Override
 	public String toString() {
-		return " Marque : " + super.getMarque() + "\n Modele : " + super.getModele() + 
-				"\nPuissance = " + iPuissance + "\n---------";
+		return " Marque : " + super.getMarque() + " Modele : " + super.getModele() + 
+				"Puissance = " + iPuissance;
 	}
 
 	

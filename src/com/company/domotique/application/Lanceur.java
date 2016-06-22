@@ -1,6 +1,7 @@
 package com.company.domotique.application;
 import com.company.domotique.appareils.AppareilElectrique;
 import com.company.domotique.appareils.AppareilThermostate;
+import com.company.domotique.appareils.Bordereau;
 
 public class Lanceur {
 	
@@ -9,13 +10,19 @@ public class Lanceur {
 		System.out.println("Bonjour");
 		AppareilElectrique ordinateur= new AppareilElectrique("DELL","GX100",500);
 		AppareilThermostate chauffage= new AppareilThermostate("Philips","mod123",1000,20,50);
+		
+		Bordereau nouveauBordereau = new Bordereau();
+		nouveauBordereau.add(chauffage);
+		nouveauBordereau.add(ordinateur);
+		System.out.println("=====================================================");
+		System.out.println(nouveauBordereau);
 
 		// affichage de l'objet chauffage (methode toString appelee par defaut)
 		//Verification de l'instanciation
-
-		System.out.println(ordinateur);
-		System.out.println(chauffage);
-		
+		System.out.println("=====================================================");
+//		System.out.println(ordinateur);
+//		System.out.println(chauffage);
+		System.out.println("=====================================================");
 		//Mise en marche chauffage, reglage thermostat
 		chauffage.demarrer();
 		chauffage.setValeurThermostat(7);

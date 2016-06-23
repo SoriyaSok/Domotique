@@ -68,9 +68,8 @@ public class AppareilThermostate extends AppareilElectrique {
 
 	@Override
 	public String toString() {
-		return "AppareilThermostate [puissanceInstantanee=" + puissanceInstantanee + ", incPuissance=" + incPuissance
-				+ ", valeurThermostat=" + valeurThermostat + ", getPuissance()=" + getPuissance() + ", getMarque()="
-				+ getMarque() + ", getModele()=" + getModele() + "]";
+		return "Marque : " + getMarque() + ", Modele : " + getModele() + ", Puissance = " + getPuissance() + ", puissanceInstantanee = " + puissanceInstantanee
+				+ ", valeurThermostat = " + valeurThermostat;
 	}
 	
 	

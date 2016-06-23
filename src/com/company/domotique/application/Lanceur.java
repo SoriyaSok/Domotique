@@ -11,12 +11,15 @@ public class Lanceur {
 		AppareilElectrique ordinateur= new AppareilElectrique("DELL","GX100",500);
 		AppareilThermostate chauffage= new AppareilThermostate("Philips","mod123",1000,20,50);
 		
-		Bordereau nouveauBordereau = new Bordereau();
+		Bordereau nouveauBordereau = new Bordereau(2,1);
 		nouveauBordereau.add(chauffage);
 		nouveauBordereau.add(ordinateur);
 		System.out.println("=====================================================");
+		
 		System.out.println(nouveauBordereau);
-
+		nouveauBordereau.trierCroissant();
+		System.out.println(nouveauBordereau);
+		
 		// affichage de l'objet chauffage (methode toString appelee par defaut)
 		//Verification de l'instanciation
 		System.out.println("=====================================================");

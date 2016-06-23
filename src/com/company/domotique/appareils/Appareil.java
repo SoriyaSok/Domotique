@@ -12,6 +12,12 @@ public abstract class Appareil {
 		modele= p_Modele;
 
 	}// constructeur
+	
+	
+	public Appareil() {
+		super();
+	}
+
 	public String getMarque() {
 		return marque;
 	} // get

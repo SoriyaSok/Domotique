@@ -11,6 +11,11 @@ import java.util.Vector;
 public class Bordereau extends Vector<AppareilElectrique> {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9024068173244951065L;
+
+	/**
 	 * constructeur de Bordereau 
 	 */
 	public Bordereau() {
@@ -30,8 +35,13 @@ public class Bordereau extends Vector<AppareilElectrique> {
 	}
 
 	public void trierCroissant(){
-		SortByCroissant temp = new SortByCroissant();
-		this.sort(temp);
+		SortByCroissant comparateur = new SortByCroissant();
+		this.sort(comparateur);
+	}
+	
+	public void trierDecroissant(){
+		SortByDecroissant comparateur = new SortByDecroissant();
+		this.sort(comparateur);
 	}
 	
 	/**

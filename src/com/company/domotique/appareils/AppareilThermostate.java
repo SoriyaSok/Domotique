@@ -1,5 +1,7 @@
 package com.company.domotique.appareils;
 
+import com.company.domotique.maison.Compteur;
+
 /**
  * AppareilThermostate est une classe d'appareilElectrique qui dispose de méthode lié à la présence d'un thermostat
  * 
@@ -25,8 +27,10 @@ public class AppareilThermostate extends AppareilElectrique {
 		return valeurThermostat;
 	}
 
-	public void setValeurThermostat(int p_nouvelleValeurThermostat) {
+	public void setValeurThermostat(int p_nouvelleValeurThermostat, Compteur p_compteur) {
 		this.valeurThermostat = p_nouvelleValeurThermostat;
+		calculConsommation();
+		demarrer(p_compteur);
 	}
 
 	public void incrementeThermostat() {

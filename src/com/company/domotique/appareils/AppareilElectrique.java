@@ -1,11 +1,18 @@
 package com.company.domotique.appareils;
 
+import com.company.domotique.inter.ConsommateurDeCourant;
+import com.company.domotique.maison.Compteur;
 
-public class AppareilElectrique extends Appareil {
+public class AppareilElectrique extends Appareil implements ConsommateurDeCourant {
 
-	protected int iPuissance=0;
-	protected boolean isEnMarche=false;
+	protected int iPuissance = 0;
+	protected boolean isEnMarche = false;
 
+	
+
+	public AppareilElectrique() {
+		super();
+	}
 
 	//Constructeur
 	public AppareilElectrique(String p_MarqueAppareilElectrique,String p_Modele, int p_Puissance){
@@ -37,8 +44,11 @@ public class AppareilElectrique extends Appareil {
 	/**
 		 met l'appareil en marche
 	*/
-    public void demarrer() {
-	   isEnMarche=true;
+    public void demarrer(Compteur compteur) {
+    	if (compteur.isEnMarche) {
+    		isEnMarche = true;
+		}
+    	compteur.calculerConsommation();
     }//demarrer
 
    /**

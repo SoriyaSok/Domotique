@@ -1,7 +1,7 @@
+
 package com.company.domotique.appareils;
 
 import com.company.domotique.inter.ConsommateurDeCourant;
-import com.company.domotique.maison.Compteur;
 
 public class AppareilElectrique extends Appareil implements ConsommateurDeCourant {
 
@@ -44,11 +44,8 @@ public class AppareilElectrique extends Appareil implements ConsommateurDeCouran
 	/**
 		 met l'appareil en marche
 	*/
-    public void demarrer(Compteur compteur) {
-    	if (compteur.isEnMarche) {
+    public void demarrer() {
     		isEnMarche = true;
-		}
-    	compteur.calculerConsommation();
     }//demarrer
 
    /**

@@ -6,24 +6,37 @@ import java.util.Vector;
 import com.company.domotique.appareils.AppareilElectrique;
 import com.company.domotique.inter.ConsommateurDeCourant;
 import com.company.domotique.inter.ProducteurDeCourant;
-
+/**
+ * la classe Compteur hérite de la classe AppareilElectrique et implemente l'interface Producteur de Courant
+ * @author soriyaValentin
+ *@version 1.0
+ */
 public class Compteur extends AppareilElectrique implements ProducteurDeCourant {
 
 	private Vector<ConsommateurDeCourant> mesAppareilsBranches = new Vector<ConsommateurDeCourant>(10);
 	private int puissanceInstantanee = 0;
 	private boolean securite = false;
 
+	/**
+	 * constructeur vide de Compteur
+	 */
 	public Compteur() {
 		super();
 	}
 	
+	/**
+	 * constructeur de Compteur 
+	 * @param p_Puissance le parametre d'entrée la puissance maximale supportée par ce compteur.
+	 */
 	public Compteur(int p_Puissance) {
 		super();
 		this.iPuissance = p_Puissance;
 	}
 
 
-
+/**
+ * 
+ */
 	public void calculerConsommation(){
 		puissanceInstantanee = 0;
 		//		for (int i = 0; i < this.size(); i++) {
@@ -39,6 +52,12 @@ public class Compteur extends AppareilElectrique implements ProducteurDeCourant 
 		}
 	}
 
+	@Override
+	public int getConsommation() {
+		calculerConsommation();
+		return puissanceInstantanee;
+	}
+	
 	public void disjoncter() {
 		setSecurite(true);
 		Enumeration<ConsommateurDeCourant> enumerationCompteur = this.mesAppareilsBranches.elements();
@@ -50,6 +69,12 @@ public class Compteur extends AppareilElectrique implements ProducteurDeCourant 
 		this.arreter();
 	}
 
+	/**
+	 * cette méthode brancher() est héritée de la classe AppareilElectrique.
+	 * @param parametre d'entrée est une interface ConsommateurDeCourant cc
+	 * dans le vecteur mesAppareilsBranches, on ajoute l'element ConsommateurDeCourant cc
+	 * puis on effectue la methode calculerConsommation() 
+	 */
 	@Override
 	public void brancher(ConsommateurDeCourant cc) {
 		this.mesAppareilsBranches.addElement(cc);

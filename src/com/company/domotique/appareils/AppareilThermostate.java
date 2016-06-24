@@ -14,7 +14,19 @@ public class AppareilThermostate extends AppareilElectrique {
 	private int puissanceInstantanee = 0;
 	private int incPuissance = 20;
 	private int valeurThermostat = 0;
-	private static int valeurThermostatMax = 20;
+	private static  int valeurThermostatMax = 20;
+	
+	public int getValeurThermostatMax() {
+		return valeurThermostatMax;
+	}
+
+	public void setValeurThermostatMax(int valeurThermostatMax) {
+		AppareilThermostate.valeurThermostatMax = valeurThermostatMax;
+	}
+
+	public AppareilThermostate() {
+		super();
+	}
 
 	public AppareilThermostate(String p_Marque, String p_Modele, int p_Puissance,
 			int p_incPuissance, int p_valeurThermostatMax) {
@@ -29,17 +41,21 @@ public class AppareilThermostate extends AppareilElectrique {
 
 	public void setValeurThermostat(int p_nouvelleValeurThermostat, Compteur p_compteur) {
 		this.valeurThermostat = p_nouvelleValeurThermostat;
-		calculConsommation();
-		demarrer(p_compteur);
 	}
 
 	public void incrementeThermostat() {
 		if (valeurThermostat < valeurThermostatMax) {
-			valeurThermostat += 1;
+			valeurThermostat++;
+		}
+	}
+
+	public void decrementeThermostat() {
+		if (valeurThermostat > 0) {
+			valeurThermostat--;
 		}
 	}
 	
-	private void calculConsommation () {
+	public void calculConsommation () {
 		if (isEnMarche) {
 			puissanceInstantanee = valeurThermostat*incPuissance; 
 		} else {

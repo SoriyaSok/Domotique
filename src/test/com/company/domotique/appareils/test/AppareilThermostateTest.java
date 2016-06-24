@@ -14,7 +14,7 @@ public class AppareilThermostateTest {
 		AppareilThermostate chauffage = new AppareilThermostate("Philips", "mod123", 250, 10, 25);
 		int valeurThermostat = 10;
 		//chauffage.setValeurThermostat(valeurThermostat);
-		chauffage.incrementeThermostat();
+//		chauffage.incrementeThermostat(null);
 		int nouvelleValeurThermostat = chauffage.getValeurThermostat();
 		
 		assertEquals(valeurThermostat+1, nouvelleValeurThermostat);
@@ -26,7 +26,7 @@ public class AppareilThermostateTest {
 		AppareilThermostate chauffage = new AppareilThermostate("Philips", "mod123", 250, 10, 25);
 		int valeurThermostat = 25;
 		//chauffage.setValeurThermostat(valeurThermostat);
-		chauffage.incrementeThermostat();
+//		chauffage.incrementeThermostat();
 		int nouvelleValeurThermostat = chauffage.getValeurThermostat();
 		
 		assertEquals(valeurThermostat, nouvelleValeurThermostat);

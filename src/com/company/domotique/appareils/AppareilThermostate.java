@@ -1,5 +1,6 @@
 package com.company.domotique.appareils;
 
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 import com.company.domotique.maison.Compteur;
 
 /**
@@ -39,19 +40,22 @@ public class AppareilThermostate extends AppareilElectrique {
 		return valeurThermostat;
 	}
 
-	public void setValeurThermostat(int p_nouvelleValeurThermostat, Compteur p_compteur) {
+	public void setValeurThermostat(int p_nouvelleValeurThermostat, Compteur p_compteur) throws CompteurADisjoncteException {
 		this.valeurThermostat = p_nouvelleValeurThermostat;
+		p_compteur.calculerConsommation();
 	}
 
-	public void incrementeThermostat() {
+	public void incrementeThermostat(Compteur compteur) throws CompteurADisjoncteException {
 		if (valeurThermostat < valeurThermostatMax) {
 			valeurThermostat++;
+			compteur.calculerConsommation();
 		}
 	}
 
-	public void decrementeThermostat() {
+	public void decrementeThermostat(Compteur compteur) throws CompteurADisjoncteException {
 		if (valeurThermostat > 0) {
 			valeurThermostat--;
+			compteur.calculerConsommation();
 		}
 	}
 	
@@ -74,6 +78,11 @@ public class AppareilThermostate extends AppareilElectrique {
 		return "AppareilThermostate [puissanceInstantanee=" + puissanceInstantanee + ", incPuissance=" + incPuissance
 				+ ", valeurThermostat=" + valeurThermostat + ", getPuissance()=" + getPuissance() + ", getMarque()="
 				+ getMarque() + ", getModele()=" + getModele() + "]";
+	}
+
+	public void brancher(Compteur unCompteurEDF) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

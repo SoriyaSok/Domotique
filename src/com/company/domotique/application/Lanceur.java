@@ -1,6 +1,7 @@
 package com.company.domotique.application;
 import com.company.domotique.appareils.AppareilElectrique;
 import com.company.domotique.appareils.AppareilThermostate;
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 import com.company.domotique.ihm.CadreGeneral;
 import com.company.domotique.maison.Compteur;
 
@@ -73,16 +74,37 @@ public class Lanceur {
 //			ArrayList alAppThermos = new ArrayList();
 //			
 
-			AppareilElectrique unOrdinateur = new AppareilElectrique("DELL","GX100",500);
+			AppareilElectrique unOrdinateur1 = new AppareilElectrique("DELL","GX100",500);
+			AppareilElectrique unOrdinateur2 = new AppareilElectrique("DELL","GX100",500);
+			AppareilElectrique unOrdinateur3 = new AppareilElectrique("DELL","GX100",500);
 			AppareilThermostate unMicroOnde = new AppareilThermostate("Philips","mod123",250, 25, 10);
 			Compteur unCompteurEDF = new Compteur(550);
+		
+			unCompteurEDF.setMarque("Boubou2000");
 
+//			try {
+//				unCompteurEDF.demarrer();
+//				unCompteurEDF.brancher(unOrdinateur1, unCompteurEDF);
+//				unOrdinateur1.demarrer(unCompteurEDF);
+//				unCompteurEDF.brancher(unOrdinateur2, unCompteurEDF);
+//				unOrdinateur2.demarrer(unCompteurEDF);
+//				unCompteurEDF.brancher(unOrdinateur3, unCompteurEDF);
+//				unOrdinateur3.demarrer(unCompteurEDF);
+//			} catch (CompteurADisjoncteException e) {
+//				System.out.println("le compteur : " + e.getCompteurEnCause().getMarque() 
+//						+ " a disjoncté pour la puissance " + e.getPuissanceDemandee());
+//			}
 			
-			unCompteurEDF.brancher(unOrdinateur);
-			unCompteurEDF.brancher(unMicroOnde);
-				
-			@SuppressWarnings("unused")
-			CadreGeneral monInterface = new CadreGeneral(unOrdinateur, unMicroOnde, unCompteurEDF);	
+			
+			try {
+				unCompteurEDF.brancher(unMicroOnde, unCompteurEDF);
+				unCompteurEDF.brancher(unOrdinateur1, unCompteurEDF);
+			} catch (CompteurADisjoncteException e) {
+				System.out.println("le compteur : " + e.getCompteurEnCause().getMarque() 
+						+ " a disjoncté pour la puissance " + e.getPuissanceDemandee());
+			}
+			
+			CadreGeneral monInterface = new CadreGeneral(unOrdinateur1, unMicroOnde, unCompteurEDF);	
 	}
 
 }

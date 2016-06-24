@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import com.company.domotique.appareils.AppareilThermostate;
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 
 
 public class PanneauThermostat extends PanneauAppareil implements ActionListener{
@@ -47,39 +48,78 @@ public class PanneauThermostat extends PanneauAppareil implements ActionListener
 
 		Object src = evt.getSource();
 		if (src == btnDemarrer) {
+			try {
+				appareil.demarrer(lePanoCompteur.getCompteur());
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			btnArreter.setOpaque(false);
 			btnDemarrer.setOpaque(true);
 			onOff.setBackground(Color.green);
-			cetAppareil.calculConsommation();
-			lePanoCompteur.majConso();
-
+			try {
+				lePanoCompteur.majConso();
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if (src == btnArreter) {
+			try {
+				appareil.arreter(lePanoCompteur.getCompteur());
+			} catch (CompteurADisjoncteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			btnArreter.setOpaque(true);
 			btnDemarrer.setOpaque(false);
 			onOff.setBackground(Color.red);
-			cetAppareil.calculConsommation();
-			lePanoCompteur.majConso();
+			try {
+				lePanoCompteur.majConso();
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if(src == btnAugmenterThermostat){
-			cetAppareil.incrementeThermostat();
+			try {
+				cetAppareil.incrementeThermostat(lePanoCompteur.getCompteur());
+			} catch (CompteurADisjoncteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			afficherThermostat();
 			if (cetAppareil.getValeurThermostat() ==  cetAppareil.getValeurThermostatMax()) {
 				btnAugmenterThermostat.setEnabled(false);
 			}
 			btnDiminuerThermostat.setEnabled(true);
 			cetAppareil.calculConsommation();
-			lePanoCompteur.majConso();
+			try {
+				lePanoCompteur.majConso();
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if (src == btnDiminuerThermostat){
-			cetAppareil.decrementeThermostat();
+			try {
+				cetAppareil.decrementeThermostat(lePanoCompteur.getCompteur());
+			} catch (CompteurADisjoncteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			afficherThermostat();
 			if (cetAppareil.getValeurThermostat() ==  0) {
 				btnDiminuerThermostat.setEnabled(false);;
 			}
 			btnAugmenterThermostat.setEnabled(true);
 			cetAppareil.calculConsommation();
-			lePanoCompteur.majConso();
+			try {
+				lePanoCompteur.majConso();
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}//btnDiminuerThermostat
 	}//actionPerformed(ActionEvent evt)
 
@@ -99,13 +139,11 @@ public class PanneauThermostat extends PanneauAppareil implements ActionListener
 
 	//En cas de disjonctage, permet d initialiser les elements du pano
 	public void initPano() {
-		super.initPano();
+		btnDemarrer.setEnabled(true);
+		btnArreter.setEnabled(false);
 		btnArreter.setOpaque(true);
 		btnDemarrer.setOpaque(false);
 		onOff.setBackground(Color.red);
-		btnAugmenterThermostat.setEnabled(false);
-		btnDiminuerThermostat.setEnabled(false);
-		lblThermostat.setText("0");	
 	}
 
 

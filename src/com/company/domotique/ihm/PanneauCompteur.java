@@ -6,22 +6,21 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 import com.company.domotique.maison.Compteur;
 
 
 
 public class PanneauCompteur
 		extends JPanel {
-			
-		//implements ActionListener{
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8662093324834463792L;
 
 	private Compteur compteur;
+
+	public Compteur getCompteur() {
+		return compteur;
+	}
 
 	private JLabel  lblPresentation;
 	private JLabel  lblConso;
@@ -32,12 +31,9 @@ public class PanneauCompteur
 	private PanneauAppareil panoE;
 	private PanneauThermostat panoT;
 
-
-
 	/*
 	 * Construit graphiquement un nouveau panneau de commande
 	 */
-
 	public PanneauCompteur(Compteur pCompteur){
 
 		//Recuperation du compteur
@@ -65,24 +61,23 @@ public class PanneauCompteur
 		
 		//affichage de l'heure
 		lblHorloge = monHorloge.labCpt;
-		lblHorloge.setPreferredSize(new Dimension(200,30));
 		lblHorloge.setForeground(Color.black);
 		lblHorloge.setOpaque(true);
 		add(lblHorloge);
-
 	}
-
-	public void majConso() {
+	
+	public void majConso() throws CompteurADisjoncteException {
 		int iNrj = compteur.getConsommation();
 		
 		//Test s'il y a eu disjonctage ou non
 		if (iNrj != -1) {
-			lblConso.setText("" + compteur.getConsommation());
+			lblConso.setText(Integer.toString(compteur.getConsommation()));
 		} 
 		else {
-			lblConso.setText("tutu");
 			panoE.initPano();
+			lblConso.setText("0");
 			panoT.initPano();
+			lblConso.setText("0");
 		}				
 	}
 

@@ -11,13 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.company.domotique.appareils.AppareilElectrique;
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 
 
 
-public class PanneauAppareil
-		extends JPanel
-		implements ActionListener{
-
+public class PanneauAppareil extends JPanel implements ActionListener{
 
 	/**
 	 * 
@@ -33,7 +31,6 @@ public class PanneauAppareil
 	/*
 	 * Construit graphiquement un nouveau panneau de commande
 	 */
-
 	public PanneauAppareil(AppareilElectrique pAppareil, PanneauCompteur pPanoC){
 		super(new FlowLayout(FlowLayout.LEFT));
 		// On note l'appareil reli�
@@ -70,27 +67,44 @@ public class PanneauAppareil
 	/*
 	 * On intercepte les evenements produits par l utilisateur
 	 */
-
-	public void actionPerformed(ActionEvent evt){
+	public void actionPerformed(ActionEvent evt) {
 
 		Object src = evt.getSource();
 
 		if(src == btnDemarrer){
-			appareil.demarrer();
-			lePanoCompteur.majConso();
-				
+			try {
+				appareil.demarrer(lePanoCompteur.getCompteur());
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			btnDemarrer.setEnabled(false);
 			btnArreter.setEnabled(true);
 			onOff.setBackground(Color.green);
+			try {
+				lePanoCompteur.majConso();
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}//btnDemarrer
 		else if (src == btnArreter){
-			appareil.arreter();
-			lePanoCompteur.majConso();
-			
+			try {
+				appareil.arreter(lePanoCompteur.getCompteur());
+			} catch (CompteurADisjoncteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			btnDemarrer.setEnabled(true);
 			btnArreter.setEnabled(false);
 			onOff.setBackground(Color.red);
+			try {
+				lePanoCompteur.majConso();
+			} catch (CompteurADisjoncteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}//btnArreter
 	}//actionPerformed(ActionEvent evt)

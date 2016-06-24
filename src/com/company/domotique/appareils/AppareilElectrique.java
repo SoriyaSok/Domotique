@@ -1,7 +1,9 @@
 
 package com.company.domotique.appareils;
 
+import com.company.domotique.exceptions.CompteurADisjoncteException;
 import com.company.domotique.inter.ConsommateurDeCourant;
+import com.company.domotique.maison.Compteur;
 
 public class AppareilElectrique extends Appareil implements ConsommateurDeCourant {
 
@@ -43,22 +45,27 @@ public class AppareilElectrique extends Appareil implements ConsommateurDeCouran
 
 	/**
 		 met l'appareil en marche
+	 * @throws CompteurADisjoncteException 
 	*/
-    public void demarrer() {
+    public void demarrer(Compteur compteur) throws CompteurADisjoncteException {
     		isEnMarche = true;
+    		compteur.calculerConsommation();
     }//demarrer
 
    /**
     arrete l'appareil
+ * @throws CompteurADisjoncteException 
    */
-   public void arreter() {
+   public void arreter(Compteur compteur) throws CompteurADisjoncteException {
    	      isEnMarche=false;
+   	      compteur.calculerConsommation();
    }//arreter
 
 	/**
 	  retourne la consommation de l'appareil
+	 * @throws CompteurADisjoncteException 
 	*/
-	public int  getConsommation(){
+	public int  getConsommation() throws CompteurADisjoncteException {
 		  if (isEnMarche)
 		  		return iPuissance;
 		  else

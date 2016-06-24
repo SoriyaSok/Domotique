@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 
 public class Horloge extends JPanel implements Runnable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -137468650667640182L;
 	public JLabel	labCpt = new JLabel("Il est :   ");
 	private Thread myThread;
 

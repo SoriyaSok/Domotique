@@ -3,7 +3,6 @@ package com.company.domotique.ihm;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -26,7 +25,7 @@ public class PanneauCompteur
 
 	private JLabel  lblPresentation;
 	private JLabel  lblConso;
-	private JButton btnConso;
+	private JLabel lblHorloge;
 
 	//Reference sur les panneaux des appareils
 	//recuperees grace a la methode abonnement de cette classe
@@ -44,6 +43,9 @@ public class PanneauCompteur
 		//Recuperation du compteur
 		compteur = pCompteur;
 		
+		//Creation du Horloge
+		Horloge monHorloge = new Horloge();
+		
 		//Construction de l IHM
 		setBackground(new Color(40,40,40));
 
@@ -60,6 +62,13 @@ public class PanneauCompteur
 		lblConso.setForeground(Color.black);
 		lblConso.setOpaque(true);
 		add(lblConso);
+		
+		//affichage de l'heure
+		lblHorloge = monHorloge.labCpt;
+		lblHorloge.setPreferredSize(new Dimension(200,30));
+		lblHorloge.setForeground(Color.black);
+		lblHorloge.setOpaque(true);
+		add(lblHorloge);
 
 	}
 

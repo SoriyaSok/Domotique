@@ -1,6 +1,4 @@
 package com.company.domotique.application;
-import java.util.ArrayList;
-
 import com.company.domotique.appareils.AppareilElectrique;
 import com.company.domotique.appareils.AppareilThermostate;
 import com.company.domotique.ihm.CadreGeneral;
@@ -71,9 +69,9 @@ public class Lanceur {
 //	System.out.println("Au revoir!");
 				
 			
-			ArrayList alAppElec = new ArrayList();
-			ArrayList alAppThermos = new ArrayList();
-			
+//			ArrayList alAppElec = new ArrayList();
+//			ArrayList alAppThermos = new ArrayList();
+//			
 
 			AppareilElectrique unOrdinateur = new AppareilElectrique("DELL","GX100",500);
 			AppareilThermostate unMicroOnde = new AppareilThermostate("Philips","mod123",250, 25, 10);
@@ -83,6 +81,7 @@ public class Lanceur {
 			unCompteurEDF.brancher(unOrdinateur);
 			unCompteurEDF.brancher(unMicroOnde);
 				
+			@SuppressWarnings("unused")
 			CadreGeneral monInterface = new CadreGeneral(unOrdinateur, unMicroOnde, unCompteurEDF);	
 	}
 
